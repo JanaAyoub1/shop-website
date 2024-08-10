@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from './services/login.service';
-import { ILoginRequest } from './models-login/login-request.model';
-import { ILoginResponse } from './models-login/login-response.model';
+import { LoginService } from '../service/login.service';
+import { ILoginRequest } from '../model/login-request.model';
+import { ILoginResponse } from '../model/login-response.model';
 import { HttpClientModule } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
 
@@ -12,6 +12,7 @@ import { jwtDecode } from 'jwt-decode';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
+
 export class LoginComponent {
   loginForm: FormGroup;
 
