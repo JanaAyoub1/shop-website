@@ -60,7 +60,7 @@
 // import { ILoginResponse } from '../models-login/login-response.model';
 
 // @Injectable()
-// export class AuthEffects {
+// export class authEffects {
 //   constructor(private actions$: Actions, private authService: LoginService) {}
 
 //   login$ = createEffect(() =>

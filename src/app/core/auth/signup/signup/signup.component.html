@@ -1,0 +1,72 @@
+<div class="signup-container">
+  <h2>Sign Up</h2>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" formControlName="firstName" />
+      <div
+        *ngIf="
+          signupForm.controls['firstName'].invalid &&
+          (signupForm.controls['firstName'].dirty ||
+            signupForm.controls['firstName'].touched)
+        "
+      >
+        <div *ngIf="signupForm.controls['firstName'].errors?.['required']">
+          First name is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" formControlName="lastName" />
+      <div
+        *ngIf="
+          signupForm.controls['lastName'].invalid &&
+          (signupForm.controls['lastName'].dirty ||
+            signupForm.controls['lastName'].touched)
+        "
+      >
+        <div *ngIf="signupForm.controls['lastName'].errors?.['required']">
+          Last name is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Email">Email:</label>
+      <input type="email" id="Email" formControlName="Email" />
+      <div
+        *ngIf="
+          signupForm.controls['Email'].invalid &&
+          (signupForm.controls['Email'].dirty ||
+            signupForm.controls['Email'].touched)
+        "
+      >
+        <div *ngIf="signupForm.controls['Email'].errors?.['required']">
+          Email is required.
+        </div>
+        <div *ngIf="signupForm.controls['Email'].errors?.['Email']">
+          Email is not valid.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Password">Password:</label>
+      <input type="password" id="Password" formControlName="Password" />
+      <div
+        *ngIf="
+          signupForm.controls['Password'].invalid &&
+          (signupForm.controls['Password'].dirty ||
+            signupForm.controls['Password'].touched)
+        "
+      >
+        <div *ngIf="signupForm.controls['Password'].errors?.['required']">
+          Password is required.
+        </div>
+        <div *ngIf="signupForm.controls['Password'].errors?.['minlength']">
+          Password must be at least 6 characters long.
+        </div>
+      </div>
+    </div>
+    <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+  </form>
+</div>
