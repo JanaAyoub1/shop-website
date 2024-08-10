@@ -1,0 +1,38 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="../../../../../assets/logo.png" alt="Logo" />
+    </div>
+
+    <!-- Links -->
+    <ul class="nav-links">
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/categories">Categories</a></li>
+    </ul>
+
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+      <select>
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="es">Español</option>
+      </select>
+    </div>
+
+    <!-- Profile Icon -->
+    <!-- <div class="profile-icon" (click)="toggleDropdown()"> -->
+    <div class="profile-icon">
+      <img src="../../../../../assets/profile-icon.png" alt="Profile Icon" />
+      <!-- <div class="dropdown" *ngIf="dropdownVisible"> -->
+      <div class="dropdown">
+        <a routerLink="/login">Log In</a>
+        <a routerLink="/signup">Sign Up</a>
+        <!-- <div *ngIf="user">
+          <p>Welcome, {{ user.name }}</p>
+          <p>Email: {{ user.email }}</p>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</nav>
