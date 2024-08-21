@@ -2,37 +2,50 @@
   <div class="navbar-container">
     <!-- Logo -->
     <div class="logo">
-      <img src="../../../../../assets/logo.png" alt="Logo" />
+      <img src="assets/logo.png" alt="Logo" />
     </div>
 
     <!-- Links -->
     <ul class="nav-links">
       <li><a routerLink="/home">Home</a></li>
-      <li><a routerLink="/categories">Categories</a></li>
+      <li (click)="toggleCategoriesDropdown()">Categories</li>
     </ul>
 
-    <!-- Language Switcher -->
-    <div class="language-switcher">
-      <select>
-        <option value="en">English</option>
-        <option value="fr">Français</option>
-        <option value="es">Español</option>
-      </select>
+    <!-- Search -->
+    <div class="search-container">
+      <input
+        type="text"
+        placeholder="Search..."
+        [formControl]="searchControl"
+      />
+      <ul *ngIf="searchResults.length > 0" class="search-results">
+        <li *ngFor="let result of searchResults">{{ result.name }}</li>
+      </ul>
     </div>
 
     <!-- Profile Icon -->
-    <!-- <div class="profile-icon" (click)="toggleDropdown()"> -->
-    <div class="profile-icon">
-      <img src="../../../../../assets/profile-icon.png" alt="Profile Icon" />
-      <!-- <div class="dropdown" *ngIf="dropdownVisible"> -->
-      <div class="dropdown">
-        <a routerLink="/login">Log In</a>
-        <a routerLink="/signup">Sign Up</a>
-        <!-- <div *ngIf="user">
-          <p>Welcome, {{ user.name }}</p>
-          <p>Email: {{ user.email }}</p>
-        </div> -->
+    <div class="profile-icon" (click)="toggleDropdown()">
+      <img src="assets/profile-icon.png" alt="Profile Icon" />
+      <div class="dropdown" *ngIf="dropdownVisible">
+        <ng-container *ngIf="isLoggedIn; else guestLinks">
+          <p>Welcome, {{ user?.name }}</p>
+          <p>Email: {{ user?.email }}</p>
+          <a (click)="logout()">Log Out</a>
+        </ng-container>
+        <ng-template #guestLinks>
+          <a routerLink="/login">Log In</a>
+          <a routerLink="/signup">Sign Up</a>
+        </ng-template>
       </div>
     </div>
+  </div>
+
+  <!-- Categories Dropdown -->
+  <div class="categories-dropdown" *ngIf="categoriesDropdownVisible">
+    <ul>
+      <li *ngFor="let category of categories" (click)="onCategorySelect(category)">
+        {{ category }}
+      </li>
+    </ul>
   </div>
 </nav>
