@@ -36,7 +36,7 @@
                 "input": "public"
               },
               "src/favicon.ico",
-              "src/app/assets"
+              "src/assets"
             ],
 
             "styles": ["src/styles.scss"],

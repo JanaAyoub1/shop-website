@@ -1,4 +1,3 @@
-// auth.selectors.ts
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { AuthState } from './login.reducers';
 
