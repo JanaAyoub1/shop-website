@@ -40,6 +40,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'account',
+    loadChildren: () =>
+      import('../app/features/user-account/user-account.module').then(
+        (m) => m.UserAccountModule
+      ),
+  },
+  {
     path: 'signup',
     canActivate: [LoginGuard],
     loadChildren: () =>

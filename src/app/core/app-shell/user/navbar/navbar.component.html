@@ -30,7 +30,7 @@
     </div>
 
     <!-- Profile Icon -->
-    <div class="profile-icon" (click)="toggleDropdown()">
+    <!-- <div class="profile-icon" (click)="toggleDropdown()">
       <img src="assets/profile-icon.png" alt="Profile Icon" />
       <div class="dropdown" *ngIf="dropdownVisible">
         <ng-container *ngIf="isLoggedIn; else guestLinks">
@@ -43,6 +43,38 @@
           <a routerLink="/signup">Sign Up</a>
         </ng-template>
       </div>
+    </div>
+  </div> -->
+
+    <!-- Account Logo/Icon -->
+    <!-- <div class="profile-icon">
+      <a [routerLink]="['/account']">
+        <img
+          src="assets/profile-icon.png"
+          alt="Profile Icon"
+          class="account-logo"
+        />
+      </a>
+    </div>
+  </div> -->
+
+    <!-- Profile Icon -->
+    <div class="profile-icon">
+      <ng-container *ngIf="isLoggedIn; else guestLinks">
+        <a [routerLink]="['/account']">
+          <img
+            src="assets/profile-icon.png"
+            alt="Profile Icon"
+            class="account-logo"
+          />
+          <span>Account</span>
+        </a>
+      </ng-container>
+
+      <ng-template #guestLinks>
+        <a routerLink="/login">Log In</a>
+        <a routerLink="/signup">Sign Up</a>
+      </ng-template>
     </div>
   </div>
 

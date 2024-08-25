@@ -24,6 +24,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from './core/auth-guard/auth.service';
 import { HomeComponent } from './features/home/home/home.component';
+import { UserAccountModule } from './features/user-account/user-account.module';
 // import { CategoryDetailComponent } from './features/category-detail/category-detail.component';
 
 @NgModule({
@@ -42,9 +43,11 @@ import { HomeComponent } from './features/home/home/home.component';
     AppRoutingModule,
     FormsModule,
     // AuthModule,
+    UserAccountModule,
     MatSnackBarModule,
     ReactiveFormsModule,
     ProductsModule,
+
     HttpClientModule,
     // StoreModule.forRoot({}, {}),
     StoreModule.forRoot({ login: authReducer }),
