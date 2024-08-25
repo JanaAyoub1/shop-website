@@ -47,6 +47,16 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'cart',
+    loadChildren: () =>
+      import('../app/features/cart/cart.module').then((m) => m.CartModule),
+  },
+  {
+    path: 'wishlist',
+    loadChildren: () =>
+      import('../app/features/wishlist/wishlist.module').then((m) => m.WishlistModule),
+  },
+  {
     path: 'signup',
     canActivate: [LoginGuard],
     loadChildren: () =>

@@ -12,11 +12,11 @@
 
 <div class="filter-sort">
   <!-- Sort options -->
-  <label for="sort">Sort by:</label>
+  <!-- <label for="sort">Sort by:</label>
   <select id="sort" (change)="onSortChange($event)">
     <option value="price" [selected]="sortBy === 'price'">Price</option>
     <option value="name" [selected]="sortBy === 'name'">Name</option>
-  </select>
+  </select> -->
 
   <label for="order">Order:</label>
   <select id="order" (change)="onSortChange($event)">
@@ -25,26 +25,26 @@
   </select>
 
   <!-- Filter options -->
-  <label for="category">Category:</label>
+  <!-- <label for="category">Category:</label>
   <select id="category" (change)="onFilterChange('category', $event)">
     <option value="">All</option>
     <option value="electronics">Electronics</option>
     <option value="jewelery">Jewelry</option>
     <option value="men's clothing">Men's Clothing</option>
     <option value="women's clothing">Women's Clothing</option>
-  </select>
+  </select> -->
 
-  <label for="priceRange">Price Range:</label>
+  <!-- <label for="priceRange">Price Range:</label>
   <select id="priceRange" (change)="onFilterChange('priceRange', $event)">
     <option value="">All</option>
     <option value="0-50">Under $50</option>
     <option value="50-100">$50 - $100</option>
     <option value="100-200">$100 - $200</option>
     <option value="200+">Over $200</option>
-  </select>
+  </select> -->
 </div>
 
-<div class="product-list">
+<!-- <div class="product-list">
   <div class="product-item" *ngFor="let product of products">
     <a
       [routerLink]="['/products', product.id]"
@@ -63,4 +63,31 @@
       </p>
     </a>
   </div>
+</div> -->
+
+<div class="product-list">
+  <div class="product-item" *ngFor="let product of products">
+    <div class="wishlist-icon">
+      <button (click)="addToWishlist(product)">
+        <i class="fa fa-heart"></i>
+      </button>
+    </div>
+
+    <a [routerLink]="['/products', product.id]" class="product-link">
+      <img [src]="product.image" alt="{{ product.title }}" class="product-image" />
+      <h3>{{ product.title }}</h3>
+      <p>Price: ${{ product.price | number : '1.2-2' }}</p>
+    </a>
+
+    <div class="quantity-controls">
+      <button (click)="decreaseQuantity(product)">-</button>
+      <span>{{ product.quantity }}</span>
+      <button (click)="increaseQuantity(product)">+</button>
+    </div>
+
+    <button (click)="addToCart(product)" class="add-to-cart">
+      Add to Cart
+    </button>
+  </div>
 </div>
+

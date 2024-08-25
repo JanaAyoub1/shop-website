@@ -29,34 +29,11 @@
       <!-- <span class="cart-count">{{ cartItemCount }}</span> -->
     </div>
 
-    <!-- Profile Icon -->
-    <!-- <div class="profile-icon" (click)="toggleDropdown()">
-      <img src="assets/profile-icon.png" alt="Profile Icon" />
-      <div class="dropdown" *ngIf="dropdownVisible">
-        <ng-container *ngIf="isLoggedIn; else guestLinks">
-          <p>Welcome, {{ user?.name }}</p>
-          <p>Email: {{ user?.email }}</p>
-          <a (click)="logout()">Log Out</a>
-        </ng-container>
-        <ng-template #guestLinks>
-          <a routerLink="/login">Log In</a>
-          <a routerLink="/signup">Sign Up</a>
-        </ng-template>
-      </div>
+    <!-- Wishlist Icon -->
+    <div class="wishlist-icon" (click)="goToWishlist()">
+      <img src="assets/wishlist.png" alt="Wishlist Icon" />
+      <!-- <span class="wishlist-count">{{ wishlistItemCount }}</span> -->
     </div>
-  </div> -->
-
-    <!-- Account Logo/Icon -->
-    <!-- <div class="profile-icon">
-      <a [routerLink]="['/account']">
-        <img
-          src="assets/profile-icon.png"
-          alt="Profile Icon"
-          class="account-logo"
-        />
-      </a>
-    </div>
-  </div> -->
 
     <!-- Profile Icon -->
     <div class="profile-icon">

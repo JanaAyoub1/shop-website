@@ -641,4 +641,9 @@ export class NavbarComponent implements OnInit {
   goToCart() {
     this.router.navigate(['/cart']);
   }
+
+  // Navigate to the wishlist page
+  goToWishlist() {
+    this.router.navigate(['/wishlist']);
+  }
 }

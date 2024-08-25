@@ -3,37 +3,25 @@
   <h2 class="product-title">{{ product.title }}</h2>
   <img [src]="product.image" [alt]="product.title" class="product-image" />
   <p class="product-description">{{ product.description }}</p>
-  <p class="product-price">Price: ${{ product.price }}</p>
+  <p class="product-price">Price: ${{ product.price | number : '1.2-2' }}</p>
 
   <!-- Similar Items Section -->
   <h3>Similar Items</h3>
-  <div
-    class="similar-products"
-    *ngIf="similarProducts.length > 0; else noSimilarItems"
-  >
-    <div
-      class="similar-product-item"
-      *ngFor="let similarProduct of similarProducts"
-    >
-      <img
-        [src]="similarProduct.image"
-        [alt]="similarProduct.title"
-        class="similar-product-image"
-      />
-      <div class="similar-product-info">
-        <a
-          [routerLink]="['/products', similarProduct.id]"
-          class="similar-product-title"
-        >
-          {{ similarProduct.title }}
-        </a>
-        <p class="similar-product-price">Price: ${{ similarProduct.price }}</p>
-      </div>
+  <div *ngIf="similarProducts.length > 0; else noSimilarItems" class="product-list">
+    <div class="product-item" *ngFor="let similarProduct of similarProducts">
+      <a (click)="navigateToProduct(similarProduct.id)" class="product-link">
+        <img [src]="similarProduct.image" [alt]="similarProduct.title" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-title">{{ similarProduct.title }}</h3>
+          <p class="product-price">Price: ${{ similarProduct.price | number: '1.2-2' }}</p>
+        </div>
+      </a>
+
     </div>
   </div>
 
   <!-- No Similar Items Template -->
   <ng-template #noSimilarItems>
-    <p>No similar items found</p>
+    <p class="no-similar-items">No similar items found</p>
   </ng-template>
 </div>

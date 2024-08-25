@@ -25,6 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from './core/auth-guard/auth.service';
 import { HomeComponent } from './features/home/home/home.component';
 import { UserAccountModule } from './features/user-account/user-account.module';
+import { CartModule } from './features/cart/cart.module';
+import { WishlistModule } from './features/wishlist/wishlist.module';
 // import { CategoryDetailComponent } from './features/category-detail/category-detail.component';
 
 @NgModule({
@@ -42,6 +44,8 @@ import { UserAccountModule } from './features/user-account/user-account.module';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    CartModule,
+    WishlistModule,
     // AuthModule,
     UserAccountModule,
     MatSnackBarModule,
