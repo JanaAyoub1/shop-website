@@ -1,10 +1,66 @@
+<!-- <div class="product-list">
+  <div class="product-item" *ngFor="let product of products">
+    <a [routerLink]="['/products', product.id]" class="product-link">
+      <img [src]="product.image" [alt]="product.title" class="product-image" />
+      <h3 class="product-title">{{ product.title }}</h3>
+      <p class="product-price">Price: ${{ product.price }}</p>
+    </a>
+  </div>
+</div>
+
+ -->
+
+<div class="filter-sort">
+  <!-- Sort options -->
+  <label for="sort">Sort by:</label>
+  <select id="sort" (change)="onSortChange($event)">
+    <option value="price" [selected]="sortBy === 'price'">Price</option>
+    <option value="name" [selected]="sortBy === 'name'">Name</option>
+  </select>
+
+  <label for="order">Order:</label>
+  <select id="order" (change)="onSortChange($event)">
+    <option value="desc" [selected]="sortOrder === 'desc'">Descending</option>
+    <option value="asc" [selected]="sortOrder === 'asc'">Ascending</option>
+  </select>
+
+  <!-- Filter options -->
+  <label for="category">Category:</label>
+  <select id="category" (change)="onFilterChange('category', $event)">
+    <option value="">All</option>
+    <option value="electronics">Electronics</option>
+    <option value="jewelery">Jewelry</option>
+    <option value="men's clothing">Men's Clothing</option>
+    <option value="women's clothing">Women's Clothing</option>
+  </select>
+
+  <label for="priceRange">Price Range:</label>
+  <select id="priceRange" (change)="onFilterChange('priceRange', $event)">
+    <option value="">All</option>
+    <option value="0-50">Under $50</option>
+    <option value="50-100">$50 - $100</option>
+    <option value="100-200">$100 - $200</option>
+    <option value="200+">Over $200</option>
+  </select>
+</div>
+
 <div class="product-list">
   <div class="product-item" *ngFor="let product of products">
-    <img [src]="product.image" [alt]="product.title" class="product-image" />
-    <div class="product-info">
+    <a
+      [routerLink]="['/products', product.id]"
+      class="product-link"
+      [attr.aria-label]="product.title"
+    >
+      <img
+        [src]="product.image"
+        [alt]="product.title"
+        class="product-image"
+        loading="lazy"
+      />
       <h3 class="product-title">{{ product.title }}</h3>
-      <p class="product-description">{{ product.description }}</p>
-      <p class="product-price">Price: ${{ product.price }}</p>
-    </div>
+      <p class="product-price">
+        Price: ${{ product.price | number : "1.2-2" }}
+      </p>
+    </a>
   </div>
 </div>
