@@ -23,6 +23,12 @@
       </ul>
     </div>
 
+    <!-- Cart Icon -->
+    <div class="cart-icon" (click)="goToCart()">
+      <img src="assets/cart.png" alt="Cart Icon" />
+      <!-- <span class="cart-count">{{ cartItemCount }}</span> -->
+    </div>
+
     <!-- Profile Icon -->
     <div class="profile-icon" (click)="toggleDropdown()">
       <img src="assets/profile-icon.png" alt="Profile Icon" />
@@ -43,8 +49,8 @@
   <!-- Categories Dropdown -->
   <div class="categories-dropdown" *ngIf="categoriesDropdownVisible">
     <ul>
-      <li *ngFor="let category of categories" (click)="onCategorySelect(category)">
-        {{ category }}
+      <li *ngFor="let category of categories">
+        <a (click)="onCategorySelect(category)">{{ category }}</a>
       </li>
     </ul>
   </div>

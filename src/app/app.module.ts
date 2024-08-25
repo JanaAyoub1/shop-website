@@ -16,21 +16,21 @@ import { NavbarComponent } from './core/app-shell/user/navbar/navbar.component';
 import { authReducer } from './core/auth/login/state/login.reducers';
 // import { authEffects } from './core/auth/login/state/login.effects';
 import { LoginService } from './core/auth/login/service/login.service';
- 
+
 // import { reducers, metaReducers } from './reducers';
 
 import { AuthInterceptor } from './core/http-interceptor/http-interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from './core/auth-guard/auth.service';
-import { CategoriesComponent } from './features/categories/categories/categories.component';
-import { CategoriesModule } from './features/categories/categories.module';
+import { HomeComponent } from './features/home/home/home.component';
 // import { CategoryDetailComponent } from './features/category-detail/category-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    // HomeComponent,
     // CategoryDetailComponent,
     // CategoriesComponent,
     // SignupComponent,
@@ -44,7 +44,7 @@ import { CategoriesModule } from './features/categories/categories.module';
     // AuthModule,
     MatSnackBarModule,
     ReactiveFormsModule,
-    CategoriesModule,
+    ProductsModule,
     HttpClientModule,
     // StoreModule.forRoot({}, {}),
     StoreModule.forRoot({ login: authReducer }),
