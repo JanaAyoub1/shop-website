@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar'; // Import MatSnackBar
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductListService } from '../service/product-list.service';
 import { IProduct } from '../model/product-list.model';
 import { CartService } from '../../../cart/service/cart.service';
 import { WishlistService } from '../../../wishlist/service/wishlist.service';
+import { AuthService } from '../../../../core/auth-guard/auth.service';
 
 @Component({
   selector: 'app-product-list',
@@ -13,16 +14,12 @@ import { WishlistService } from '../../../wishlist/service/wishlist.service';
 export class ProductListComponent implements OnInit {
   products: IProduct[] = [];
   sortOrder: string = 'desc'; // Default sort order
-  // sortBy: string = 'price'; // Default sort by
-  // filters: any = {
-  //   category: '',
-  //   priceRange: '',
-  // };
 
   constructor(
     private productListService: ProductListService,
     private cartService: CartService,
     private wishlistService: WishlistService,
+    private authService: AuthService, // Inject AuthService
     private snackBar: MatSnackBar // Inject MatSnackBar
   ) {}
 
@@ -45,31 +42,47 @@ export class ProductListComponent implements OnInit {
     const target = event.target as HTMLSelectElement;
     if (target) {
       this.sortOrder = target.value;
-      console.log(this.sortOrder)
+      console.log(this.sortOrder);
       this.loadProducts();
     }
   }
 
-  // onFilterChange(key: string, event: Event): void {
-  //   const target = event.target as HTMLSelectElement;
-  //   if (target) {
-  //     this.filters[key] = target.value;
-  //     this.loadProducts();
-  //   }
-  // }
-
   addToCart(product: IProduct): void {
-    this.cartService.addToCart(product);
-    this.snackBar.open('Added to Cart', 'Close', {
-      duration: 2000,
-    });
+    if (this.authService.isLoggedIn()) {
+      this.cartService.addToCart(product);
+      this.snackBar.open('Added to Cart', 'Close', {
+        duration: 3000,
+        verticalPosition: 'top',
+      });
+    } else {
+      this.snackBar.open(
+        'You need to log in to add items to the cart.',
+        'Close',
+        {
+          duration: 3000,
+          verticalPosition: 'top',
+        }
+      );
+    }
   }
 
   addToWishlist(product: IProduct): void {
-    this.wishlistService.addToWishlist(product);
-    this.snackBar.open('Added to Wishlist', 'Close', {
-      duration: 2000,
-    });
+    if (this.authService.isLoggedIn()) {
+      this.wishlistService.addToWishlist(product);
+      this.snackBar.open('Added to Wishlist', 'Close', {
+        duration: 3000,
+        verticalPosition: 'top',
+      });
+    } else {
+      this.snackBar.open(
+        'You need to log in to add items to the wishlist.',
+        'Close',
+        {
+          duration: 3000,
+          verticalPosition: 'top',
+        }
+      );
+    }
   }
 
   increaseQuantity(product: IProduct): void {

@@ -1,63 +1,29 @@
-// // import { CanActivateFn } from '@angular/router';
-
-// // export const authGuard: CanActivateFn = (route, state) => {
-// //   return true;
-// // };
-
-// import { Injectable } from '@angular/core';
-// import {
-//   CanActivate,
-//   ActivatedRouteSnapshot,
-//   RouterStateSnapshot,
-//   UrlTree,
-//   Router,
-// } from '@angular/router';
-// import { Observable } from 'rxjs';
-// import { AuthService } from './auth.service';
-
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class AuthGuard implements CanActivate {
-//   constructor(private authService: AuthService, private router: Router) {}
-
-//   canActivate(
-//     route: ActivatedRouteSnapshot,
-//     state: RouterStateSnapshot
-//   ):
-//     | Observable<boolean | UrlTree>
-//     | Promise<boolean | UrlTree>
-//     | boolean
-//     | UrlTree {
-//     const isAuthenticated = this.authService.isLoggedIn();
-
-//     if (isAuthenticated) {
-//       return true;
-//     } else {
-//       // Redirect the user to the login page
-//       this.router.navigate(['/login'], {
-//         queryParams: { returnUrl: state.url },
-//       });
-//       return false;
-//     }
-//   }
-// }
-
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar'; // Import MatSnackBar
 import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private snackBar: MatSnackBar // Inject MatSnackBar
+  ) {}
 
   canActivate(): boolean {
     if (this.authService.isLoggedIn()) {
       return true;
     } else {
-      // Redirect to login page if the user is not authenticated
+      // Display a message to inform the user
+      this.snackBar.open('You need to log in to access this page.', 'Close', {
+        duration: 3000,
+        verticalPosition: 'top',
+      });
+
+      // Redirect to login page
       this.router.navigate(['/login']);
       return false;
     }

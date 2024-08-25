@@ -48,7 +48,8 @@ export class CartComponent implements OnInit {
     this.cartService.removeFromCart(productId);
     this.loadCartItems();
     this.snackBar.open('Removed from Cart', 'Close', {
-      duration: 2000,
+      duration: 3000,
+      verticalPosition: 'top',
     });
   }
 
@@ -56,7 +57,8 @@ export class CartComponent implements OnInit {
     this.cartService.clearCart();
     this.loadCartItems();
     this.snackBar.open('Cart cleared', 'Close', {
-      duration: 2000,
+      duration: 3000,
+      verticalPosition: 'top',
     });
   }
 }
