@@ -567,7 +567,7 @@ export class NavbarComponent implements OnInit {
     private authService: AuthService,
     private searchService: SearchService,
     private productCategoryService: ProductCategoryService,
-    // private cartService: CartService, // Inject cart service
+    // private cartService: CartService,
     private router: Router
   ) {}
 
@@ -632,13 +632,18 @@ export class NavbarComponent implements OnInit {
     this.categoriesDropdownVisible = false;
   }
 
-  logout() {
-    this.authService.logout();
-    this.router.navigate(['/login']);
-  }
+  // logout() {
+  //   this.authService.logout();
+  //   this.router.navigate(['/login']);
+  // }
 
   // Navigate to the cart page
   goToCart() {
     this.router.navigate(['/cart']);
+  }
+
+  // Navigate to the wishlist page
+  goToWishlist() {
+    this.router.navigate(['/wishlist']);
   }
 }

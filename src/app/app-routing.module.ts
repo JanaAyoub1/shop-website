@@ -8,7 +8,7 @@ import { LoginGuard } from './core/auth-guard/login.guard';
 const routes: Routes = [
   {
     path: 'home',
-    // canActivate: [LoginGuard],
+    canActivate: [LoginGuard],
     loadChildren: () =>
       import('../app/features/home/home.module').then((m) => m.HomeModule),
   },
@@ -20,6 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'products',
+    canActivate: [LoginGuard],
     loadChildren: () =>
       import('../app/features/products/products.module').then(
         (m) => m.ProductsModule
@@ -27,6 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'products/:id',
+    canActivate: [LoginGuard],
     loadChildren: () =>
       import('../app/features/products/products.module').then(
         (m) => m.ProductsModule
@@ -34,9 +36,32 @@ const routes: Routes = [
   },
   {
     path: 'category/:category',
+    canActivate: [LoginGuard],
     loadChildren: () =>
       import('../app/features/products/products.module').then(
         (m) => m.ProductsModule
+      ),
+  },
+  {
+    path: 'account',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('../app/features/user-account/user-account.module').then(
+        (m) => m.UserAccountModule
+      ),
+  },
+  {
+    path: 'cart',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('../app/features/cart/cart.module').then((m) => m.CartModule),
+  },
+  {
+    path: 'wishlist',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('../app/features/wishlist/wishlist.module').then(
+        (m) => m.WishlistModule
       ),
   },
   {

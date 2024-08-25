@@ -24,12 +24,17 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from './core/auth-guard/auth.service';
 import { HomeComponent } from './features/home/home/home.component';
+import { UserAccountModule } from './features/user-account/user-account.module';
+import { CartModule } from './features/cart/cart.module';
+import { WishlistModule } from './features/wishlist/wishlist.module';
+import { FooterComponent } from './core/app-shell/user/footer/footer.component';
 // import { CategoryDetailComponent } from './features/category-detail/category-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    FooterComponent,
     // HomeComponent,
     // CategoryDetailComponent,
     // CategoriesComponent,
@@ -41,10 +46,14 @@ import { HomeComponent } from './features/home/home/home.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    CartModule,
+    WishlistModule,
     // AuthModule,
+    UserAccountModule,
     MatSnackBarModule,
     ReactiveFormsModule,
     ProductsModule,
+
     HttpClientModule,
     // StoreModule.forRoot({}, {}),
     StoreModule.forRoot({ login: authReducer }),

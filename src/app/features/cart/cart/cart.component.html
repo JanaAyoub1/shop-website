@@ -1,0 +1,27 @@
+<div class="cart-page">
+  <h2>Your Cart</h2>
+
+  <!-- Display a message if the cart is empty -->
+  <div *ngIf="isCartEmpty; else cartItemsTemplate">
+    <p>Your cart is empty.</p>
+  </div>
+
+  <!-- Template for displaying cart items -->
+  <ng-template #cartItemsTemplate>
+    <div *ngFor="let product of cartItems">
+      <div class="cart-item">
+        <h3>{{ product.title }}</h3>
+        <p>Price: ${{ product.price }}</p>
+        <p>Quantity: 
+          <button (click)="decreaseQuantity(product)">-</button>
+          {{ product.quantity }}
+          <button (click)="increaseQuantity(product)">+</button>
+        </p>
+        <button (click)="removeFromCart(product.id)">Remove</button>
+      </div>
+    </div>
+
+    <!-- Only show the Clear Cart button if the cart is not empty -->
+    <button *ngIf="!isCartEmpty" (click)="clearCart()">Clear Cart</button>
+  </ng-template>
+</div>

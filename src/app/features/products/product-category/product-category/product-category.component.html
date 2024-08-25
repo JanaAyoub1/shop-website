@@ -4,7 +4,11 @@
   <div class="product-list" *ngIf="products.length > 0">
     <div class="product-item" *ngFor="let product of products">
       <a [routerLink]="['/products', product.id]" class="product-link">
-        <img [src]="product.image" [alt]="product.title" class="product-image" />
+        <img
+          [src]="product.image"
+          [alt]="product.title"
+          class="product-image"
+        />
         <h3 class="product-title">{{ product.title }}</h3>
         <p class="product-price">Price: ${{ product.price }}</p>
       </a>

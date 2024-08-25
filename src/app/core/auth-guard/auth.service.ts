@@ -22,9 +22,8 @@
 //   }
 
 //   // You can add other methods related to authentication as needed
-  
-// }
 
+// }
 
 // import { Injectable } from '@angular/core';
 // import { Router } from '@angular/router';
@@ -36,7 +35,7 @@
 //   providedIn: 'root',
 // })
 // export class AuthService {
-//   private apiUrl = environment.authenticationAPI; 
+//   private apiUrl = environment.authenticationAPI;
 
 //   constructor(private router: Router, private http: HttpClient) {}
 
@@ -73,7 +72,6 @@
 //     return null;
 //   }
 // }
-
 
 // import { Injectable } from '@angular/core';
 // import { Router } from '@angular/router';
@@ -147,7 +145,6 @@ import { environment } from '../../../environments/environment.dev';
 import { jwtDecode } from 'jwt-decode';
 import { tap } from 'rxjs/operators';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -176,12 +173,14 @@ export class AuthService {
     this.http.post(`${this.apiUrl}User/Logout()`, {}).subscribe({
       next: () => {
         localStorage.removeItem('authToken');
+        localStorage.removeItem('user');
         this.authStatus.next(false);
         this.userInfo.next(null);
         this.router.navigate(['/login']);
       },
       error: () => {
         localStorage.removeItem('authToken');
+        localStorage.removeItem('user');
         this.authStatus.next(false);
         this.userInfo.next(null);
         this.router.navigate(['/login']);

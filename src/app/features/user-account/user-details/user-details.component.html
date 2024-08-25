@@ -1,0 +1,43 @@
+<div class="account-page">
+  <h2>User Profile</h2>
+
+  <!-- User Details -->
+  <div *ngIf="!isEditMode">
+    <p><strong>First Name:</strong> {{ user?.given_name }}</p>
+    <p><strong>Last Name:</strong> {{ user?.family_name }}</p>
+    <p><strong>Email:</strong> {{ user?.email }}</p>
+
+    <!-- Edit Profile Button -->
+    <button mat-raised-button color="primary" (click)="toggleEditMode()">
+      Edit Profile
+    </button>
+
+    <!-- Logout Button -->
+    <button mat-raised-button color="warn" (click)="logout()">Log Out</button>
+  </div>
+
+  <!-- Edit Profile Form -->
+  <div *ngIf="isEditMode">
+    <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="given_name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="family_name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">
+        Save Changes
+      </button>
+      <button mat-button (click)="toggleEditMode()">Cancel</button>
+    </form>
+  </div>
+</div>
