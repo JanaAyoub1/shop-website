@@ -1,18 +1,79 @@
 .account-page {
-  max-width: 600px;
-  margin: 0 auto;
+  background-color: #f8f8f8; // Match background color with home and footer
+  color: #000000; // Match text color with navbar and footer
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
 
   h2 {
     text-align: center;
+    font-size: 1.5rem;
     margin-bottom: 20px;
+    color: #000000; // Match text color with navbar and footer
   }
 
   .mat-form-field {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 16px; // Space between form fields
+
+    .mat-form-field-label {
+      color: #000000; // Label color
+    }
+
+    .mat-form-field-infix {
+      background-color: #ffffff; // Input background color
+    }
+
+    .mat-form-field-outline {
+      border-color: #cccccc; // Outline border color
+    }
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    margin-top: 16px; // Space between buttons
+
+    &:first-child {
+      margin-top: 0; // No margin on the first button
+    }
+
+    &.mat-raised-button {
+      border-radius: 8px; // Rounded corners for buttons
+      font-size: 1rem; // Font size for buttons
+    }
+  }
+
+  // Responsive styles
+  @media (max-width: 768px) {
+    padding: 15px;
+
+    h2 {
+      font-size: 1.25rem;
+    }
+
+    .mat-form-field {
+      margin-bottom: 12px; // Reduce space between form fields on smaller screens
+    }
+
+    button {
+      font-size: 0.875rem; // Smaller font size for buttons on smaller screens
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px;
+
+    h2 {
+      font-size: 1rem;
+    }
+
+    .mat-form-field {
+      margin-bottom: 30px; // Further reduce space between form fields
+    }
+
+    button {
+      font-size: 0.75rem; // Further reduce font size for buttons
+    }
   }
 }

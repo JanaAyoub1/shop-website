@@ -1,442 +1,255 @@
-//   .navbar {
-//   background-color: #fff; // White background for the navbar
-//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Subtle shadow for a slight 3D effect
-//   padding: 1rem 2rem; // Padding around the navbar
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   position: sticky;
-//   top: 0;
-//   z-index: 1000; // Ensure the navbar is above other content
-
-//   .navbar-container {
-//     display: flex;
-//     align-items: center;
-//     width: 100%;
-//     max-width: 1200px;
-//     margin: 0 auto;
-//   }
-
-//   .logo {
-//     flex: 1;
-//     img {
-//       height: 50px; // Adjust logo size
-//       width: auto;
-//     }
-//   }
-
-//   .nav-links {
-//     flex: 2;
-//     display: flex;
-//     justify-content: center;
-
-//     li {
-//       margin: 0 1rem;
-//       list-style: none;
-
-//       a {
-//         text-decoration: none;
-//         color: #333;
-//         font-weight: 500;
-//         padding: 0.5rem 1rem;
-//         border-radius: 4px;
-//         transition: background-color 0.3s, color 0.3s;
-
-//         &:hover,
-//         &:focus {
-//           background-color: #f0f0f0;
-//           color: #000;
-//         }
-//       }
-//     }
-//   }
-
-//   .search-container {
-//     flex: 2;
-//     display: flex;
-//     align-items: center;
-
-//     input {
-//       width: 100%;
-//       padding: 0.5rem 1rem;
-//       border: 1px solid #ddd;
-//       border-radius: 4px;
-//       font-size: 1rem;
-
-//       &:focus {
-//         border-color: #007bff;
-//         outline: none;
-//       }
-//     }
-
-//     .search-results {
-//       position: absolute;
-//       top: 100%;
-//       left: 0;
-//       right: 0;
-//       max-height: 200px;
-//       overflow-y: auto;
-//       background-color: #fff;
-//       border: 1px solid #ddd;
-//       border-radius: 4px;
-//       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-//       margin-top: 0.5rem;
-//       padding: 0.5rem 0;
-
-//       li {
-//         padding: 0.5rem 1rem;
-//         cursor: pointer;
-//         transition: background-color 0.3s;
-
-//         &:hover {
-//           background-color: #f0f0f0;
-//         }
-//       }
-//     }
-//   }
-
-//   .language-switcher {
-//     margin-left: 2rem;
-
-//     select {
-//       padding: 0.5rem 1rem;
-//       border: 1px solid #ddd;
-//       border-radius: 4px;
-//       font-size: 1rem;
-//       background-color: #fff;
-
-//       &:focus {
-//         border-color: #007bff;
-//         outline: none;
-//       }
-//     }
-//   }
-
-//   // .profile-icon {
-//   //   position: relative;
-//   //   cursor: pointer;
-
-//   //   img {
-//   //     height: 40px;
-//   //     width: auto;
-//   //     border-radius: 50%;
-//   //   }
-
-//   //   .dropdown {
-//   //     display: none;
-//   //     position: absolute;
-//   //     top: 100%;
-//   //     right: 0;
-//   //     background-color: #fff;
-//   //     border: 1px solid #ddd;
-//   //     border-radius: 4px;
-//   //     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-//   //     margin-top: 0.5rem;
-//   //     padding: 0.5rem 1rem;
-//   //     z-index: 1000;
-
-//   //     a {
-//   //       display: block;
-//   //       padding: 0.5rem;
-//   //       text-decoration: none;
-//   //       color: #007bff;
-//   //       transition: background-color 0.3s;
-
-//   //       &:hover {
-//   //         background-color: #f0f0f0;
-//   //       }
-//   //     }
-
-//   //     p {
-//   //       margin: 0.5rem 0;
-//   //       color: #333;
-//   //       font-size: 0.9rem;
-//   //     }
-//   //   }
-
-//   //   &.active .dropdown {
-//   //     display: block;
-//   //   }
-//   // }
-//   .profile-icon {
-//       position: relative;
-//       cursor: pointer;
-
-//       img {
-//         height: 30px; // Adjust based on profile icon size
-//       }
-
-//       .dropdown {
-//         position: absolute;
-//         top: 100%;
-//         right: 0;
-//         background-color: #ffffff;
-//         border: 1px solid #ddd;
-//         border-radius: 4px;
-//         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-//         display: flex;
-//         flex-direction: column;
-//         padding: 10px;
-//         width: 200px;
-//         z-index: 10;
-
-//         p {
-//           margin: 0 0 10px;
-//           font-size: 14px;
-//           color: #333;
-//         }
-
-//         a {
-//           text-decoration: none;
-//           color: #007bff;
-//           margin-bottom: 5px;
-//           font-size: 14px;
-//           transition: color 0.3s;
-
-//           &:hover {
-//             color: #0056b3;
-//           }
-//         }
-//       }
-//     }
-
-// }
+// Variables for consistent styling
+$primary-color: #ffffff; // Navbar background color
+$secondary-color: #007bff; // Text color
+$text-color: #333;
+$dropdown-background: #ffffff; // Background color for dropdown
+$dropdown-item-color: #666; // Color for dropdown items
+$dropdown-item-hover-color: #ffffff; // Color for dropdown items on hover
+$dropdown-hover-background: $secondary-color; // Background color for items on hover
+$transition-time: 0.3s;
+$logo-size: 40px; // Consistent size for all logos/icons
 
 .navbar {
-  background-color: #fff; // White background for the navbar
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Subtle shadow for a slight 3D effect
-  padding: 1rem 2rem; // Padding around the navbar
+  background-color: $primary-color;
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 1000; // Ensure the navbar is above other content
+  position: relative;
+  border-bottom: 1px solid #ddd; // Optional: adds a border to distinguish the navbar
 
   .navbar-container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
 
-  .logo {
-    flex: 1;
-    img {
-      height: 50px; // Adjust logo size
-      width: auto;
-    }
-  }
+    // Logo
+    .logo img {
+      height: $logo-size;
+      transition: transform $transition-time ease;
+      margin-right: 2rem; // Spacing between logo and nav links
 
-  .nav-links {
-    flex: 2;
-    display: flex;
-    justify-content: center;
-
-    li {
-      margin: 0 1rem;
-      list-style: none;
-      position: relative; // Required for dropdown positioning
-
-      a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        transition: background-color 0.3s, color 0.3s;
-
-        &:hover,
-        &:focus {
-          background-color: #f0f0f0;
-          color: #000;
-        }
-      }
-    }
-  }
-
-  .search-container {
-    flex: 2;
-    display: flex;
-    align-items: center;
-
-    input {
-      width: 100%;
-      padding: 0.5rem 1rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 1rem;
-
-      &:focus {
-        border-color: #007bff;
-        outline: none;
+      &:hover {
+        transform: scale(1.1);
       }
     }
 
-    .search-results {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      max-height: 200px;
-      overflow-y: auto;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      margin-top: 0.5rem;
-      padding: 0.5rem 0;
-
-      li {
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-        transition: background-color 0.3s;
-
-        &:hover {
-          background-color: #f0f0f0;
-        }
-      }
-    }
-  }
-
-  .language-switcher {
-    margin-left: 2rem;
-
-    select {
-      padding: 0.5rem 1rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 1rem;
-      background-color: #fff;
-
-      &:focus {
-        border-color: #007bff;
-        outline: none;
-      }
-    }
-  }
-
-  // .profile-icon {
-  //   position: relative;
-  //   cursor: pointer;
-
-  //   img {
-  //     height: 30px; // Adjust based on profile icon size
-  //   }
-
-  //   .dropdown {
-  //     position: absolute;
-  //     top: 100%;
-  //     right: 0;
-  //     background-color: #ffffff;
-  //     border: 1px solid #ddd;
-  //     border-radius: 4px;
-  //     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  //     display: flex;
-  //     flex-direction: column;
-  //     padding: 10px;
-  //     width: 200px;
-  //     z-index: 10;
-  //     display: none; // Hide by default
-
-  //     p {
-  //       margin: 0 0 10px;
-  //       font-size: 14px;
-  //       color: #333;
-  //     }
-
-  //     a {
-  //       text-decoration: none;
-  //       color: #007bff;
-  //       margin-bottom: 5px;
-  //       font-size: 14px;
-  //       transition: color 0.3s;
-
-  //       &:hover {
-  //         color: #0056b3;
-  //       }
-  //     }
-  //   }
-
-  //   &.active .dropdown {
-  //     display: flex; // Show dropdown when active
-  //   }
-  // }
-  .profile-icon {
-    position: relative;
-    cursor: pointer;
-
-    img {
-      height: 30px; // Adjust based on profile icon size
-    }
-
-    .dropdown {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background-color: #ffffff;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    // Navigation links
+    .nav-links {
       display: flex;
-      flex-direction: column;
-      padding: 10px;
-      width: 200px;
-      z-index: 10;
-
-      p {
-        margin: 0 0 10px;
-        font-size: 14px;
-        color: #333;
-      }
-
-      a {
-        text-decoration: none;
-        color: #007bff;
-        margin-bottom: 5px;
-        font-size: 14px;
-        transition: color 0.3s;
-
-        &:hover {
-          color: #0056b3;
-        }
-      }
-    }
-  }
-
-  .categories-dropdown {
-    position: absolute;
-    top: 60px; // Adjust based on your navbar height
-    left: 0;
-    width: 200px; // Adjust width as needed
-    background: white;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000; // Ensure dropdown is above other content
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
+      list-style: none;
+      margin-left: 2rem;
 
       li {
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
+        margin: 0 1rem;
+        cursor: pointer;
 
         a {
+          color: $text-color;
           text-decoration: none;
-          color: #333;
-          display: block;
+          font-weight: 600;
+          transition: color $transition-time ease;
 
           &:hover {
-            background-color: #f0f0f0;
+            color: $secondary-color;
           }
         }
+      }
+    }
 
-        &:last-child {
-          border-bottom: none;
+    // Search bar
+    .search-container {
+      position: relative;
+      flex: 1;
+      max-width: 300px;
+      margin-left: 2rem;
+
+      input {
+        padding: 0.5rem;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        width: 100%;
+        transition: width $transition-time ease;
+
+        &:focus {
+          outline: none;
+          width: 100%;
         }
+      }
+
+      .search-results {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        border-radius: 5px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        list-style: none;
+        padding: 0.5rem;
+        z-index: 10;
+
+        li {
+          padding: 0.5rem;
+          cursor: pointer;
+          transition: background-color $transition-time ease;
+
+          &:hover {
+            background-color: $secondary-color;
+            color: white;
+          }
+        }
+      }
+    }
+
+    // Cart and wishlist icons
+    .cart-icon,
+    .wishlist-icon {
+      margin-left: 1.5rem;
+      cursor: pointer;
+      position: relative;
+
+      img {
+        height: $logo-size;
+        transition: transform $transition-time ease;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+
+      .cart-count,
+      .wishlist-count {
+        position: absolute;
+        top: -5px;
+        right: -10px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        padding: 0.2rem 0.5rem;
+        font-size: 0.75rem;
+      }
+    }
+
+    // Profile icon and account links
+    .profile-icon {
+      margin-left: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      .account-logo {
+        height: $logo-size;
+        transition: transform $transition-time ease;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+
+      a {
+        color: $text-color;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color $transition-time ease;
+        display: flex;
+        align-items: center; // Align text with the profile icon
+
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+
+  // Categories dropdown
+  .categories-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: $dropdown-background;
+    width: 100%; // Make the dropdown span full width
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    border-radius: 5px;
+    z-index: 1000;
+
+    ul {
+      display: flex; // Display items in a row
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap; // Allow wrapping to the next line if necessary
+      justify-content: center; // Center items horizontally
+
+      li {
+        margin: 0 1rem; // Spacing between items
+        cursor: pointer;
+
+        a {
+          color: $dropdown-item-color; // Color for dropdown items
+          text-decoration: none;
+          transition: color $transition-time ease;
+          display: block; // Make the link take full width for easier clicking
+          padding: 0.5rem 1rem; // Add padding for better clickability
+          border-radius: 5px; // Round the corners
+
+          &:hover {
+            background-color: $dropdown-hover-background; // Background color on hover
+            color: $dropdown-item-hover-color; // Color on hover
+          }
+        }
+      }
+    }
+  }
+
+  // Responsive design adjustments
+  @media (max-width: 1200px) {
+    .nav-links li {
+      margin: 0 0.5rem;
+    }
+
+    .search-container {
+      max-width: 200px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .navbar-container {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .nav-links {
+        margin: 1rem 0;
+      }
+
+      .search-container {
+        margin: 1rem 0;
+        max-width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .navbar-container {
+      flex-direction: column;
+      align-items: center;
+
+      .nav-links {
+        display: none;
+      }
+
+      .search-container {
+        max-width: 100%;
+        margin-left: 0;
+      }
+
+      .profile-icon,
+      .cart-icon,
+      .wishlist-icon {
+        margin: 0.5rem 0;
       }
     }
   }

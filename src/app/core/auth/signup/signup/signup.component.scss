@@ -1,77 +1,97 @@
+// Variables for consistency
+$navbar-bg-color: #ffffff; // White
+$navbar-text-color: #000000; // Black
+$btn-bg-color: #000000; // Black for buttons
+$btn-text-color: #ffffff; // White text for buttons
+
 .signup-container {
-  width: 100%;
+  background-color: $navbar-bg-color;
+  color: $navbar-text-color;
+  padding: 50px 20px;
   max-width: 400px;
   margin: 0 auto;
-  padding: 1rem;
-  background-color: #f9f9f9;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-    color: #333;
+    margin-bottom: 20px;
+    font-size: 2rem;
   }
 
   form {
-    display: flex;
-    flex-direction: column;
-
     .form-group {
-      margin-bottom: 1rem;
+      margin-bottom: 20px;
+      text-align: left;
 
       label {
-        display: block;
-        margin-bottom: 0.5rem;
         font-size: 1rem;
-        color: #555;
+        margin-bottom: 5px;
+        display: inline-block;
       }
 
       input {
         width: 100%;
-        padding: 0.75rem;
-        font-size: 1rem;
+        padding: 10px;
         border: 1px solid #ddd;
         border-radius: 4px;
+        font-size: 1rem;
         box-sizing: border-box;
-        transition: border-color 0.3s ease;
-
-        &:focus {
-          border-color: #007bff;
-          outline: none;
-        }
       }
 
       div {
-        margin-top: 0.5rem;
-        color: #d9534f;
+        color: red;
         font-size: 0.875rem;
-
-        div {
-          margin-bottom: 0.5rem;
-        }
+        margin-top: 5px;
       }
     }
 
     button {
-      padding: 0.75rem;
-      font-size: 1rem;
-      color: #fff;
-      background-color: #007bff;
+      width: 100%;
+      padding: 12px 20px;
+      background-color: $btn-bg-color;
+      color: $btn-text-color;
       border: none;
-      border-radius: 4px;
+      border-radius: 8px;
+      font-size: 1rem;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.2s ease;
 
       &:hover {
-        background-color: #0056b3;
+        background-color: lighten($btn-bg-color, 10%);
+        transform: translateY(-2px); // Slight lift effect
       }
 
       &:disabled {
-        background-color: #ccc;
+        background-color: lighten($btn-bg-color, 40%);
         cursor: not-allowed;
       }
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    padding: 40px 15px;
+
+    h2 {
+      font-size: 1.75rem;
+    }
+
+    button {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 30px 10px;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    button {
+      font-size: 0.85rem;
     }
   }
 }

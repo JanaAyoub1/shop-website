@@ -1,58 +1,138 @@
-// // .home-page {
-// //   // Additional styles if needed
-// // }
+// Variables
+$navbar-bg-color: #ffffff; // white
+$navbar-text-color: #000000; // black
+$hero-bg-image: url('/assets/hero3.jpg'); // path to your hero image
+$hero-text-color: #ffffff; // white text for contrast
+$btn-primary-bg: #ffffff; // White background color for the button
+$btn-primary-color: #000000; // Black text color for the button
+$btn-primary-border: 2px solid #ffffff; // White border for the button
 
-// // Hero Section Styles
-// .hero {
-//   position: relative;
-//   height: 60vh; // Adjust height as needed
-//   // background: url('/assets/hero-bg.jpg') no-repeat center center/cover; // Adjust path to background image
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   color: white;
-//   text-align: center;
-//   overflow: hidden; // Ensure content does not overflow
+.home-page {
+  // Hero Section
+  .hero {
+    background: $hero-bg-image center/cover no-repeat;
+    color: $hero-text-color;
+    padding: 120px 20px; // Adjust padding for smaller screens
+    text-align: left;
+    position: relative;
 
-//   &::before {
-//     content: "";
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     background: rgba(0, 0, 0, 0.5); // Semi-transparent overlay
-//     z-index: 1; // Ensure overlay is above background image
-//   }
+    .hero-content {
+      position: relative; // Change to relative for better centering
+      z-index: 1;
+      max-width: 80%; // Adjust width to accommodate larger screen sizes
+      margin: 0 auto; // Center horizontally
 
-//   .hero-content {
-//     position: relative;
-//     z-index: 2; // Ensure content is above the overlay
-//     max-width: 800px;
-//     padding: 20px;
+      h1 {
+        font-size: 3rem; // Adjust font size for larger screens
+        margin-bottom: 1rem;
+      }
 
-//     h1 {
-//       font-size: 3rem; // Adjust font size
-//       margin-bottom: 10px;
-//     }
+      p {
+        font-size: 1.25rem; // Adjust font size for better readability
+        margin-bottom: 2rem;
+      }
 
-//     p {
-//       font-size: 1.5rem; // Adjust font size
-//       margin-bottom: 20px;
-//     }
+      .btn-primary {
+        background-color: $btn-primary-bg;
+        color: $btn-primary-color;
+        padding: 0.75rem 2rem; // Increase padding for better button appearance
+        border: $btn-primary-border;
+        border-radius: 50px; // Rounded corners for a modern look
+        text-decoration: none;
+        font-size: 1.125rem; // Increase font size for better readability
+        font-weight: bold;
+        display: inline-block;
+        transition: background-color 0.3s ease, transform 0.2s ease;
 
-//     .btn-primary {
-//       background-color: #007bff; // Button color
-//       color: white;
-//       padding: 10px 20px;
-//       text-decoration: none;
-//       border-radius: 5px;
-//       font-size: 1rem;
-//       transition: background-color 0.3s ease;
+        &:hover {
+          background-color: lighten($btn-primary-bg, 10%);
+          transform: translateY(-2px); // Slight lift effect on hover
+        }
 
-//       &:hover {
-//         background-color: #0056b3; // Darker button color on hover
-//       }
-//     }
-//   }
-// }
+        &:focus {
+          outline: 2px solid lighten($btn-primary-bg, 20%); // Add focus outline for accessibility
+        }
+      }
+    }
+  }
+
+  // Products Display Section
+  .products-display {
+    padding: 60px 20px; // Adjust padding for smaller screens
+    text-align: center;
+
+    .products-display-content {
+      h2 {
+        font-size: 2rem; // Adjust font size for larger screens
+        margin-top: 0;
+      }
+    }
+  }
+
+  // Responsive Styles
+  @media (max-width: 768px) {
+    .hero {
+      padding: 100px 15px; // Reduce padding on smaller screens
+
+      .hero-content {
+        max-width: 90%; // Adjust width for smaller screens
+
+        h1 {
+          font-size: 2.5rem; // Further reduce font size
+        }
+
+        p {
+          font-size: 1rem; // Further reduce font size
+        }
+
+        .btn-primary {
+          padding: 0.5rem 1.5rem; // Adjust button size for smaller screens
+          font-size: 1rem; // Adjust button text size
+        }
+      }
+    }
+
+    .products-display {
+      padding: 40px 15px; // Reduce padding on smaller screens
+
+      .products-display-content {
+        h2 {
+          font-size: 1.5rem; // Further reduce font size
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      padding: 80px 10px; // Further reduce padding for very small screens
+
+      .hero-content {
+        max-width: 100%; // Full width for very small screens
+
+        h1 {
+          font-size: 1.75rem; // Further reduce font size
+        }
+
+        p {
+          font-size: 0.875rem; // Further reduce font size
+        }
+
+        .btn-primary {
+          padding: 0.5rem 1rem; // Adjust button size for very small screens
+          font-size: 0.875rem; // Adjust button text size
+        }
+      }
+    }
+
+    .products-display {
+      padding: 30px 10px; // Reduce padding on very small screens
+
+      .products-display-content {
+        h2 {
+          font-size: 1.25rem; // Further reduce font size
+        }
+      }
+    }
+  }
+}
