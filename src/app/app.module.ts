@@ -13,7 +13,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './core/app-shell/user/navbar/navbar.component';
 
-import { authReducer } from './core/auth/login/state/login.reducers';
+// import { authReducer } from './core/auth/login/state/login.reducers';
 // import { authEffects } from './core/auth/login/state/login.effects';
 import { LoginService } from './core/auth/login/service/login.service';
 
@@ -56,7 +56,7 @@ import { FooterComponent } from './core/app-shell/user/footer/footer.component';
 
     HttpClientModule,
     // StoreModule.forRoot({}, {}),
-    StoreModule.forRoot({ login: authReducer }),
+    // StoreModule.forRoot({ login: authReducer }),
     // EffectsModule.forRoot([AuthEffects]),
   ],
   providers: [

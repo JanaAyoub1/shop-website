@@ -8,7 +8,7 @@ import { LoginGuard } from './core/auth-guard/login.guard';
 const routes: Routes = [
   {
     path: 'home',
-    canActivate: [LoginGuard],
+    // canActivate: [LoginGuard],
     loadChildren: () =>
       import('../app/features/home/home.module').then((m) => m.HomeModule),
   },
@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    canActivate: [LoginGuard],
+    // canActivate: [LoginGuard],
     loadChildren: () =>
       import('../app/features/products/products.module').then(
         (m) => m.ProductsModule
@@ -28,7 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'products/:id',
-    canActivate: [LoginGuard],
+    // canActivate: [LoginGuard],
     loadChildren: () =>
       import('../app/features/products/products.module').then(
         (m) => m.ProductsModule
@@ -36,7 +36,7 @@ const routes: Routes = [
   },
   {
     path: 'category/:category',
-    canActivate: [LoginGuard],
+    // canActivate: [LoginGuard],
     loadChildren: () =>
       import('../app/features/products/products.module').then(
         (m) => m.ProductsModule

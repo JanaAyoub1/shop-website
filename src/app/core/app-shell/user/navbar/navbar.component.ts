@@ -595,16 +595,16 @@ export class NavbarComponent implements OnInit {
     });
 
     // Handle search input
-    this.searchControl.valueChanges
-      .pipe(
-        debounceTime(300),
-        distinctUntilChanged(),
-        switchMap((query) => this.search(query)),
-        catchError(() => of([]))
-      )
-      .subscribe((results) => {
-        this.searchResults = results;
-      });
+    // this.searchControl.valueChanges
+    //   .pipe(
+    //     debounceTime(300),
+    //     distinctUntilChanged(),
+    //     switchMap((query) => this.search(query)),
+    //     catchError(() => of([]))
+    //   )
+    //   .subscribe((results) => {
+    //     this.searchResults = results;
+    //   });
 
     // Fetch the cart items count
     // this.cartService.getCartItems().subscribe((items) => {
@@ -612,12 +612,12 @@ export class NavbarComponent implements OnInit {
     // });
   }
 
-  private search(query: string): Observable<any[]> {
-    if (!query.trim()) {
-      return of([]);
-    }
-    return this.searchService.search(query);
-  }
+  // private search(query: string): Observable<any[]> {
+  //   if (!query.trim()) {
+  //     return of([]);
+  //   }
+  //   return this.searchService.search(query);
+  // }
 
   toggleDropdown() {
     this.dropdownVisible = !this.dropdownVisible;

@@ -1,60 +1,84 @@
 .footer {
-  background-color: #333;
-  color: #fff;
-  padding: 40px 0;
+  background-color: #ffffff; // Match navbar background color
+  color: #000000; // Match navbar text color
+  padding: 20px 0 0; // Remove bottom padding
+  border-top: 1px solid #e0e0e0; // Simple top border for separation
 
-  .container {
+  .footer-content {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     flex-wrap: wrap;
-  }
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 
-  .footer-section {
-    flex: 1;
-    margin: 20px;
+    .footer-section {
+      margin-bottom: 20px;
 
-    h4 {
-      font-size: 18px;
-      margin-bottom: 15px;
-      text-transform: uppercase;
+      h4 {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        color: #000000; // Match navbar text color
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 8px;
+
+          a {
+            color: #000000; // Match navbar text color
+            text-decoration: none;
+            font-size: 0.875rem;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
+    .social-media {
+      display: flex;
+      gap: 10px;
 
-      li {
-        margin-bottom: 10px;
+      a {
+        display: flex;
+        align-items: center;
 
-        a {
-          color: #fff;
-          text-decoration: none;
-          transition: color 0.3s;
+        i {
+          margin-right: 5px;
+        }
 
-          &:hover {
-            color: #f8b400;
-          }
+        &:hover {
+          text-decoration: underline;
         }
       }
     }
   }
 
-  .social-media {
-    display: flex;
-    gap: 15px;
-
-    i {
-      margin-right: 8px;
-    }
-  }
-
   .footer-bottom {
     text-align: center;
-    margin-top: 20px;
+    border-top: 1px solid #e0e0e0; // Simple border for separation
+    padding: 10px 0;
+    font-size: 0.875rem;
+    margin-bottom: 0; // Ensure no margin at the bottom
+  }
+}
 
-    p {
-      margin: 0;
-      font-size: 14px;
+// Responsive adjustments
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .footer-section {
+      margin-bottom: 20px;
     }
   }
 }
