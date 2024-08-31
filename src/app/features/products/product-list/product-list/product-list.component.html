@@ -67,11 +67,7 @@
 
 <div class="product-list">
   <div class="product-item" *ngFor="let product of products">
-    <div class="wishlist-icon">
-      <button (click)="addToWishlist(product)">
-        <i class="fa fa-heart"></i>
-      </button>
-    </div>
+    
 
     <a [routerLink]="['/products', product.id]" class="product-link">
       <img [src]="product.image" alt="{{ product.title }}" class="product-image" />
@@ -88,6 +84,13 @@
     <button (click)="addToCart(product)" class="add-to-cart">
       Add to Cart
     </button>
+
+    <div class="wishlist-icon">
+      <button (click)="addToWishlist(product)">
+        <i class="fa fa-heart"></i>
+      </button>
+    </div>
+    
   </div>
 </div>
 

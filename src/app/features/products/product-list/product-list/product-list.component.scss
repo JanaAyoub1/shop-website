@@ -1,69 +1,222 @@
 .product-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-  padding: 1rem;
-  // background-color: #f8f8f8;
+  gap: 20px; // Increased space between product items
+  justify-content: space-around; // Better distribution of items
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 
   .product-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: calc(33.333% - 1rem); // 3 items per row with spacing
-    max-width: 300px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 1.5rem; // Add margin at the bottom for spacing
+    background-color: #f9f9f9; // Softer background color
+    border: 1px solid #dcdcdc; // Softer border color
+    border-radius: 12px; // More rounded corners for a softer look
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Deeper shadow for better depth
+    padding: 15px;
+    width: 100%;
+    max-width: 280px; // Adjust to make items slightly narrower
+    box-sizing: border-box;
+    position: relative;
 
-    &:hover {
-      transform: scale(1.02);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    .wishlist-icon {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 1;
+
+      button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #ff6f61; // Softer color for wishlist icon
+        font-size: 1.5rem; // Slightly larger size for visibility
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #e63946; // Softer transition on hover
+        }
+      }
     }
 
-    .product-image {
+    .product-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+
+      .product-image {
+        width: 100%; // Responsive image
+        height: auto;
+        border-bottom: 2px solid #dcdcdc; // Slightly thicker border below image
+        border-radius: 8px; // More rounded corners for images
+        object-fit: cover; // Ensure image covers the area
+      }
+
+      h3 {
+        font-size: 1.5rem; // Larger font size for more emphasis
+        margin: 15px 0;
+        color: #333333; // Engaging color for the text
+        text-align: center; // Center the product title
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #007bff; // Engaging hover effect
+        }
+      }
+
+      p {
+        font-size: 1.125rem; // Larger font size for price
+        color: #555555; // Softer color for price text
+        text-align: center; // Center the price text
+      }
+    }
+
+    .quantity-controls {
+      display: flex;
+      justify-content: center; // Center the quantity controls
+      align-items: center;
+      gap: 15px; // Increased gap between buttons and quantity
+      margin: 15px 0;
+
+      button {
+        background-color: #e0e0e0;
+        border: 1px solid #bbbbbb;
+        border-radius: 8px; // More rounded corners for buttons
+        padding: 8px 15px;
+        font-size: 1.125rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #cccccc;
+        }
+      }
+
+      span {
+        font-size: 1.125rem; // Larger font size for quantity number
+        padding: 0 12px;
+      }
+    }
+
+    .add-to-cart {
+      background-color: #007bff; // Blue color for add-to-cart button
+      color: #ffffff;
+      border: none;
+      border-radius: 8px; // More rounded corners for button
+      padding: 12px;
       width: 100%;
-      height: 200px;
-      object-fit: cover;
-      transition: opacity 0.3s ease;
-      border-bottom: 1px solid #ddd;
-    }
+      font-size: 1.125rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px; // Space between the cart icon and heart icon
 
-    .product-info {
-      padding: 1rem;
-
-      .product-title {
-        font-size: 1.2rem;
-        margin: 0 0 0.5rem 0;
-        color: #333;
-        font-weight: bold;
+      &:hover {
+        background-color: #0056b3; // Engaging hover effect
       }
 
-      .product-description {
-        font-size: 0.875rem;
-        color: #666;
-        margin: 0 0 0.5rem 0;
-        line-height: 1.4;
-      }
-
-      .product-price {
-        font-size: 1rem;
-        color: #e74c3c;
-        font-weight: bold;
+      .fa-heart {
+        font-size: 3rem; // Adjust size for heart icon
+        color: #ff6f61; // Softer color for heart icon
       }
     }
   }
 
+  // Responsive styles
   @media (max-width: 768px) {
     .product-item {
-      width: calc(50% - 1rem); // 2 items per row on medium screens
+      max-width: 100%;
+      margin-bottom: 25px; // Space between rows on smaller screens
+
+      .wishlist-icon {
+        top: 8px;
+        right: 8px;
+      }
     }
   }
 
   @media (max-width: 480px) {
     .product-item {
-      width: calc(100% - 1rem); // 1 item per row on small screens
+      max-width: 100%;
+      margin-bottom: 20px; // Further reduce space between rows
+
+      .wishlist-icon {
+        top: 6px;
+        right: 6px;
+      }
+
+      h3 {
+        font-size: 1.25rem; // Slightly smaller font size for title
+      }
+
+      p {
+        font-size: 1rem; // Slightly smaller font size for price
+      }
+    }
+  }
+}
+
+.filter-sort {
+  margin-bottom: 25px;
+  padding: 15px 25px;
+  // background-color: #f9f9f9; // Softer background color for filter and sort section
+  // border: 1px solid #dcdcdc; // Softer border color
+  // border-radius: 12px; // More rounded corners
+  // max-width: 600px;
+  margin: 0 auto;
+
+  label {
+    display: block;
+    font-size: 1.125rem;
+    margin-bottom: 10px; // Space between label and select box
+    color: #333333; // Engaging color for text
+  }
+
+  select {
+    width: 100%; // Full width of the container
+    padding: 10px 15px;
+    border: 1px solid #bbbbbb; // Softer border color
+    border-radius: 8px; // More rounded corners
+    background-color: #ffffff; // Background color
+    font-size: 1.125rem;
+    color: #555555; // Softer text color
+    cursor: pointer;
+    transition: border-color 0.3s ease; // Transition for border color on focus
+
+    &:focus {
+      border-color: #28a745; // Softer focus color
+      outline: none; // Remove default outline
+    }
+
+    option {
+      padding: 10px;
+      font-size: 1.125rem;
+    }
+  }
+
+  // Responsive styles
+  @media (max-width: 768px) {
+    padding: 10px 15px;
+
+    label {
+      font-size: 1rem; // Smaller font size for label
+    }
+
+    select {
+      font-size: 1rem; // Smaller font size for select box
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 8px 10px;
+
+    label {
+      font-size: 0.875rem; // Further reduce font size for label
+    }
+
+    select {
+      font-size: 0.875rem; // Further reduce font size for select box
     }
   }
 }

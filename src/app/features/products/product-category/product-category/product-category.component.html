@@ -1,17 +1,28 @@
 <div *ngIf="selectedCategory">
   <h2>Products in {{ selectedCategory }}</h2>
   <div *ngIf="products.length === 0">No products found.</div>
-  <div class="product-list" *ngIf="products.length > 0">
+  
+  <div *ngIf="products.length > 0" class="product-list">
     <div class="product-item" *ngFor="let product of products">
       <a [routerLink]="['/products', product.id]" class="product-link">
-        <img
-          [src]="product.image"
-          [alt]="product.title"
-          class="product-image"
-        />
-        <h3 class="product-title">{{ product.title }}</h3>
-        <p class="product-price">Price: ${{ product.price }}</p>
+        <img [src]="product.image" alt="{{ product.title }}" class="product-image" />
+        <h3>{{ product.title }}</h3>
+        <p>Price: ${{ product.price | number : '1.2-2' }}</p>
       </a>
+      
+      <div class="quantity-controls">
+        <button (click)="decreaseQuantity(product)">-</button>
+        <span>{{ product.quantity }}</span>
+        <button (click)="increaseQuantity(product)">+</button>
+      </div>
+      
+      <button (click)="addToCart(product)" class="add-to-cart">Add to Cart</button>
+      
+      <div class="wishlist-icon">
+        <button (click)="addToWishlist(product)">
+          <i class="fa fa-heart"></i>
+        </button>
+      </div>
     </div>
   </div>
 </div>

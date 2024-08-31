@@ -9,7 +9,7 @@ import { AuthService } from '../../../core/auth-guard/auth.service';
   styleUrls: ['./user-details.component.scss'],
 })
 export class UserDetailsComponent implements OnInit {
-  user: any; // User information fetched from localStorage
+  user: any; // User information fetched from localStorage or AuthService
   isEditMode: boolean = false;
   editProfileForm!: FormGroup;
   initialUserData: any; // To store the initial user data for comparison
@@ -21,18 +21,20 @@ export class UserDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Load user data from localStorage
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      this.user = JSON.parse(storedUser);
+    // Load user data from AuthService or localStorage
+    this.authService.userInfo$.subscribe((userInfo) => {
+      this.user = userInfo || JSON.parse(localStorage.getItem('user') || '{}');
       this.initialUserData = { ...this.user }; // Save initial user data
-    }
 
-    // Initialize the form with current user data
-    this.editProfileForm = this.formBuilder.group({
-      given_name: [this.user?.given_name || '', Validators.required],
-      family_name: [this.user?.family_name || '', Validators.required],
-      email: [this.user?.email || '', [Validators.required, Validators.email]],
+      // Initialize the form with current user data
+      this.editProfileForm = this.formBuilder.group({
+        given_name: [this.user?.given_name || '', Validators.required],
+        family_name: [this.user?.family_name || '', Validators.required],
+        email: [
+          this.user?.email || '',
+          [Validators.required, Validators.email],
+        ],
+      });
     });
   }
 
@@ -74,7 +76,10 @@ export class UserDetailsComponent implements OnInit {
         // Update the user object with form values
         this.user = { ...this.user, ...this.editProfileForm.value };
 
-        // Save the updated user object back to localStorage
+        // Save the updated user object back to AuthService
+        this.authService.updateUserInfo(this.user);
+
+        // Save the updated user object to localStorage
         localStorage.setItem('user', JSON.stringify(this.user));
 
         // Show a success message

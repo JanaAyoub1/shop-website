@@ -5,6 +5,7 @@ import { IProduct } from '../model/product-list.model';
 import { CartService } from '../../../cart/service/cart.service';
 import { WishlistService } from '../../../wishlist/service/wishlist.service';
 import { AuthService } from '../../../../core/auth-guard/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -19,8 +20,9 @@ export class ProductListComponent implements OnInit {
     private productListService: ProductListService,
     private cartService: CartService,
     private wishlistService: WishlistService,
-    private authService: AuthService, // Inject AuthService
-    private snackBar: MatSnackBar // Inject MatSnackBar
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -63,6 +65,7 @@ export class ProductListComponent implements OnInit {
           verticalPosition: 'top',
         }
       );
+      this.router.navigate(['/login']);
     }
   }
 
@@ -82,6 +85,7 @@ export class ProductListComponent implements OnInit {
           verticalPosition: 'top',
         }
       );
+      this.router.navigate(['/login']);
     }
   }
 

@@ -5,8 +5,19 @@
   <p class="product-description">{{ product.description }}</p>
   <p class="product-price">Price: ${{ product.price | number : '1.2-2' }}</p>
 
+  <!-- Quantity Controls -->
+  <div class="quantity-controls">
+    <button (click)="decreaseQuantity(product)">-</button>
+    <span>{{ product.quantity || 1 }}</span>
+    <button (click)="increaseQuantity(product)">+</button>
+  </div>
+
+  <!-- Add to Cart and Wishlist Buttons -->
+  <button (click)="addToCart(product)" class="add-to-cart">Add to Cart</button>
+  <button (click)="addToWishlist(product)" class="add-to-wishlist">Add to Wishlist</button>
+
   <!-- Similar Items Section -->
-  <h3>Similar Items</h3>
+  <h2>Similar Items</h2>
   <div *ngIf="similarProducts.length > 0; else noSimilarItems" class="product-list">
     <div class="product-item" *ngFor="let similarProduct of similarProducts">
       <a (click)="navigateToProduct(similarProduct.id)" class="product-link">
@@ -17,6 +28,16 @@
         </div>
       </a>
 
+      <!-- Quantity Controls for Similar Products -->
+      <div class="quantity-controls">
+        <button (click)="decreaseQuantity(similarProduct)">-</button>
+        <span>{{ similarProduct.quantity || 1 }}</span>
+        <button (click)="increaseQuantity(similarProduct)">+</button>
+      </div>
+
+      <!-- Add to Cart and Wishlist Buttons for Similar Products -->
+      <button (click)="addToCart(similarProduct)" class="add-to-cart">Add to Cart</button>
+      <button (click)="addToWishlist(similarProduct)" class="add-to-wishlist">Add to Wishlist</button>
     </div>
   </div>
 

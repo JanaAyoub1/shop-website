@@ -247,6 +247,10 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ProductCategoryService } from '../../product-category/service/product-category.service';
 import { ProductDetailService } from '../service/product-detail.service';
 import { IProduct } from '../model/product-detail.model';
+import { CartService } from '../../../cart/service/cart.service';
+import { WishlistService } from '../../../wishlist/service/wishlist.service';
+import { AuthService } from '../../../../core/auth-guard/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-detail',
@@ -261,7 +265,11 @@ export class ProductDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private productCategoryService: ProductCategoryService,
-    private productDetailService: ProductDetailService
+    private productDetailService: ProductDetailService,
+    private cartService: CartService,
+    private wishlistService: WishlistService,
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -298,5 +306,54 @@ export class ProductDetailComponent implements OnInit {
 
   navigateToProduct(productId: number) {
     this.router.navigate(['/products', productId]);
+  }
+  addToCart(product: IProduct): void {
+    if (this.authService.isLoggedIn()) {
+      this.cartService.addToCart(product);
+      this.snackBar.open('Added to Cart', 'Close', {
+        duration: 3000,
+        verticalPosition: 'top',
+      });
+    } else {
+      this.snackBar.open(
+        'You need to log in to add items to the cart.',
+        'Close',
+        {
+          duration: 3000,
+          verticalPosition: 'top',
+        }
+      );
+      this.router.navigate(['/login']);
+    }
+  }
+
+  addToWishlist(product: IProduct): void {
+    if (this.authService.isLoggedIn()) {
+      this.wishlistService.addToWishlist(product);
+      this.snackBar.open('Added to Wishlist', 'Close', {
+        duration: 3000,
+        verticalPosition: 'top',
+      });
+    } else {
+      this.snackBar.open(
+        'You need to log in to add items to the wishlist.',
+        'Close',
+        {
+          duration: 3000,
+          verticalPosition: 'top',
+        }
+      );
+      this.router.navigate(['/login']);
+    }
+  }
+
+  increaseQuantity(product: IProduct): void {
+    product.quantity = (product.quantity || 1) + 1;
+  }
+
+  decreaseQuantity(product: IProduct): void {
+    if (product.quantity > 1) {
+      product.quantity -= 1;
+    }
   }
 }

@@ -1,14 +1,31 @@
 <nav class="navbar">
   <div class="navbar-container">
-    <!-- Logo -->
-    <div class="logo">
-      <img src="assets/logo.png" alt="Logo" />
+    <!-- Logo and Title -->
+    <div class="logo-title">
+      <!-- Logo -->
+      <div class="logo">
+        <a routerLink="/home">
+          <img src="assets/logo.png" alt="Logo" />
+        </a>
+      </div>
+
+      <!-- Title -->
+      <div class="shop-title">
+        <a routerLink="/home">Shop with Jana</a>
+      </div>
     </div>
 
     <!-- Links -->
     <ul class="nav-links">
       <li><a routerLink="/home">Home</a></li>
-      <li (click)="toggleCategoriesDropdown()"><a>Categories</a></li>
+      <li (click)="toggleCategoriesDropdown()">
+        <a
+          href="javascript:void(0)"
+          [attr.aria-expanded]="categoriesDropdownVisible ? 'true' : 'false'"
+        >
+          Categories
+        </a>
+      </li>
     </ul>
 
     <!-- Search -->
@@ -26,18 +43,24 @@
     <!-- Cart Icon -->
     <div class="cart-icon" (click)="goToCart()">
       <img src="assets/cart.png" alt="Cart Icon" />
-      <!-- <span class="cart-count">{{ cartItemCount }}</span> -->
+      <!-- Display the cart count if user is logged in and cartItemsCount$ > 0 -->
+      <span class="cart-count" *ngIf="(isLoggedIn$ | async) && (cartItemsCount$ | async) as cartItemsCount">
+        {{ cartItemsCount > 0 ? cartItemsCount : '' }}
+      </span>
     </div>
 
     <!-- Wishlist Icon -->
     <div class="wishlist-icon" (click)="goToWishlist()">
       <img src="assets/wishlist.png" alt="Wishlist Icon" />
-      <!-- <span class="wishlist-count">{{ wishlistItemCount }}</span> -->
+      <!-- Display the wishlist count if user is logged in and wishlistItemsCount$ > 0 -->
+      <span class="wishlist-count" *ngIf="(isLoggedIn$ | async) && (wishlistItemsCount$ | async) as wishlistItemsCount">
+        {{ wishlistItemsCount > 0 ? wishlistItemsCount : '' }}
+      </span>
     </div>
 
     <!-- Profile Icon -->
     <div class="profile-icon">
-      <ng-container *ngIf="isLoggedIn; else guestLinks">
+      <ng-container *ngIf="(isLoggedIn$ | async) && (user$ | async); else guestLinks">
         <a [routerLink]="['/account']">
           <img
             src="assets/profile-icon.png"

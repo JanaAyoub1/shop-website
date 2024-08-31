@@ -11,7 +11,7 @@ $logo-size: 40px; // Consistent size for all logos/icons
 
 .navbar {
   background-color: $primary-color;
-  padding: 1rem 2rem;
+  padding: 1rem 10rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -24,14 +24,38 @@ $logo-size: 40px; // Consistent size for all logos/icons
     justify-content: space-between;
     width: 100%;
 
-    // Logo
-    .logo img {
-      height: $logo-size;
-      transition: transform $transition-time ease;
-      margin-right: 2rem; // Spacing between logo and nav links
+    // Logo and Title Container
+    .logo-title {
+      display: flex;
+      align-items: center;
 
-      &:hover {
-        transform: scale(1.1);
+      // Logo
+      .logo {
+        margin-right: 1rem; // Adjust spacing between logo and title
+        img {
+          height: $logo-size;
+          transition: transform $transition-time ease;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      // Title
+      .shop-title {
+        font-size: 18px; // Reduced font size
+        font-weight: bold;
+        color: $text-color;
+        a {
+          text-decoration: none;
+          color: $text-color;
+          transition: color $transition-time ease;
+
+          &:hover {
+            color: $secondary-color;
+          }
+        }
       }
     }
 
@@ -47,8 +71,9 @@ $logo-size: 40px; // Consistent size for all logos/icons
 
         a {
           color: $text-color;
+          font-size: 16px;
           text-decoration: none;
-          font-weight: 600;
+          font-weight: 500;
           transition: color $transition-time ease;
 
           &:hover {
@@ -63,7 +88,8 @@ $logo-size: 40px; // Consistent size for all logos/icons
       position: relative;
       flex: 1;
       max-width: 300px;
-      margin-left: 2rem;
+      margin-left: 8rem;
+      margin-right: 4rem;
 
       input {
         padding: 0.5rem;
@@ -107,7 +133,7 @@ $logo-size: 40px; // Consistent size for all logos/icons
     // Cart and wishlist icons
     .cart-icon,
     .wishlist-icon {
-      margin-left: 1.5rem;
+      // margin-left: 1rem; // Reduced spacing between icons
       cursor: pointer;
       position: relative;
 
@@ -125,7 +151,7 @@ $logo-size: 40px; // Consistent size for all logos/icons
         position: absolute;
         top: -5px;
         right: -10px;
-        background-color: red;
+        background-color: $secondary-color;
         color: white;
         border-radius: 50%;
         padding: 0.2rem 0.5rem;
@@ -135,7 +161,7 @@ $logo-size: 40px; // Consistent size for all logos/icons
 
     // Profile icon and account links
     .profile-icon {
-      margin-left: 2rem;
+      // margin-left: 1rem; // Reduced spacing between profile and other icons
       display: flex;
       align-items: center;
       gap: 1rem;
@@ -151,7 +177,8 @@ $logo-size: 40px; // Consistent size for all logos/icons
 
       a {
         color: $text-color;
-        font-weight: 600;
+        font-size: 16px; // Reduced font size to match the account text
+        font-weight: 500;
         text-decoration: none;
         transition: color $transition-time ease;
         display: flex;
@@ -196,10 +223,24 @@ $logo-size: 40px; // Consistent size for all logos/icons
           padding: 0.5rem 1rem; // Add padding for better clickability
           border-radius: 5px; // Round the corners
 
-          &:hover {
-            background-color: $dropdown-hover-background; // Background color on hover
-            color: $dropdown-item-hover-color; // Color on hover
+          &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 2px;
+          width: 0; // Start with no underline
+          background-color: $secondary-color; // Blue underline color
+          transition: width $transition-time ease;
+        }
+
+        &:hover {
+          color: $secondary-color; // Change text color on hover
+
+          &::after {
+            width: 100%; // Show underline only for the hovered item
           }
+        }
         }
       }
     }
